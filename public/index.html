@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="logo_ls.ico">
+<title>Lariza Sandoval</title>
+<meta name="description" content="Portafolio de Nombre Apellido, Ingeniera de Datos y Analista de Datos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F4F6F9;
+    --bg-elevated: #FFFFFF;
+    --bg-elevated-2: #EBEEF3;
+    --text: #101826;
+    --text-dim: #4B5768;
+    --text-faint: #8993A3;
+    --accent-amber: #C97F03;
+    --accent-teal: #0C8F82;
+    --border: rgba(16,24,38,0.10);
+    --border-strong: rgba(16,24,38,0.20);
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --max-w: 1120px;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection{ background: var(--accent-amber); color: #FFFFFF; }
+
+  a{ color: inherit; text-decoration: none; }
+
+  img{ max-width: 100%; display:block; }
+
+  :focus-visible{
+    outline: 2px solid var(--accent-teal);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  section{ padding: 120px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type{ border-bottom: none; }
+
+  .eyebrow{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before{
+    content: '';
+    width: 22px; height: 1px;
+    background: var(--accent-teal);
+  }
+
+  h1, h2, h3{ font-family: var(--font-display); font-weight: 600; letter-spacing: -0.01em; }
+
+  h2{ font-size: clamp(28px, 4vw, 40px); margin-bottom: 48px; max-width: 640px; }
+
+  p{ color: var(--text-dim); }
+
+  /* ---------- NAV ---------- */
+  header{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    background: rgba(244,246,249,0.82);
+    border-bottom: 1px solid var(--border);
+  }
+  nav.wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  .logo{
+    font-family: var(--font-mono);
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .logo .dot{ width: 8px; height: 8px; border-radius: 50%; background: var(--accent-amber); }
+  .navlinks{ display: flex; gap: 36px; font-size: 14px; color: var(--text-dim); }
+  .navlinks a{ transition: color .2s ease; position: relative; }
+  .navlinks a:hover{ color: var(--text); }
+  .nav-cta{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 9px 18px;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .nav-cta:hover{ border-color: var(--accent-teal); color: var(--accent-teal); }
+  .navlinks, .nav-cta{ display: flex; }
+  @media (max-width: 720px){
+    .navlinks{ display: none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    padding-top: 200px;
+    padding-bottom: 140px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  #hero-canvas{
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .hero .wrap{ position: relative; z-index: 2; }
+  .hero-role{
+    font-family: var(--font-mono);
+    color: var(--accent-amber);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .hero h1{
+    font-size: clamp(40px, 7vw, 76px);
+    line-height: 1.04;
+    max-width: 820px;
+  }
+  .hero h1 em{
+    font-style: normal;
+    color: var(--accent-teal);
+  }
+  .hero-sub{
+    margin-top: 26px;
+    font-size: 18px;
+    max-width: 560px;
+    color: var(--text-dim);
+  }
+  .hero-actions{
+    display: flex; gap: 16px; margin-top: 44px; flex-wrap: wrap;
+  }
+  .btn{
+    font-family: var(--font-mono);
+    font-size: 14px;
+    padding: 14px 26px;
+    border-radius: 6px;
+    transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary{
+    background: var(--accent-amber);
+    color: #10151F;
+    font-weight: 500;
+  }
+  .btn-primary:hover{ transform: translateY(-2px); }
+  .btn-ghost{
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+  }
+  .btn-ghost:hover{ border-color: var(--accent-teal); color: var(--accent-teal); transform: translateY(-2px); }
+
+  .hero-stats{
+    margin-top: 90px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .hero-stats div{
+    background: var(--bg-elevated);
+    padding: 22px 24px;
+  }
+  .stat-num{
+    font-family: var(--font-mono);
+    font-size: 26px;
+    color: var(--accent-teal);
+  }
+  .stat-label{
+    font-size: 12px;
+    color: var(--text-faint);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  @media (max-width: 720px){
+    .hero-stats{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ---------- SOBRE MI ---------- */
+  .about-grid{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .avatar{
+    width: 168px; height: 168px;
+    border-radius: 16px;
+    background: linear-gradient(150deg, var(--bg-elevated-2), var(--bg-elevated));
+    border: 1px solid var(--border-strong);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 44px;
+    color: var(--accent-teal);
+    overflow: hidden;
+  }
+  .avatar img{ width: 100%; height: 100%; object-fit: cover; }
+  .about-body p{ font-size: 17px; margin-bottom: 18px; max-width: 620px; }
+  .about-body p strong{ color: var(--text); font-weight: 500; }
+  .facts{
+    margin-top: 32px;
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    display: grid;
+    gap: 10px;
+  }
+  .facts div{ display: flex; gap: 14px; color: var(--text-dim); }
+  .facts span:first-child{ color: var(--text-faint); min-width: 130px; }
+  @media (max-width: 640px){
+    .about-grid{ grid-template-columns: 1fr; }
+    .avatar{ width: 96px; height: 96px; font-size: 30px; }
+  }
+
+  /* ---------- PROYECTOS ---------- */
+  .projects-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .project-card{
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .project-card:hover{ border-color: var(--border-strong); transform: translateY(-3px); }
+  .project-metric{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent-amber);
+    margin-bottom: 16px;
+  }
+  .project-card h3{ font-size: 21px; margin-bottom: 12px; }
+  .project-card p{ font-size: 14.5px; flex-grow: 1; }
+  .tag-row{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .tag{
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: var(--bg-elevated-2);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+  .project-link{
+    margin-top: 22px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent-teal);
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .project-link .arrow{ transition: transform .2s ease; }
+  .project-card:hover .arrow{ transform: translateX(3px); }
+  @media (max-width: 780px){
+    .projects-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* ---------- HABILIDADES ---------- */
+  .skills-groups{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 60px;
+  }
+  .skill-group h3{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    margin-bottom: 18px;
+  }
+  .skill-tags{ display: flex; flex-wrap: wrap; gap: 10px; }
+  .skill-tags span{
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  @media (max-width: 640px){
+    .skills-groups{ grid-template-columns: 1fr; }
+  }
+
+  /* ---------- EXPERIENCIA ---------- */
+  .timeline{ position: relative; padding-left: 48px; }
+  .timeline::before{
+    content:'';
+    position: absolute;
+    left: 11px; top: 6px; bottom: 6px;
+    width: 1px;
+    background: var(--border-strong);
+  }
+  .tl-item{ position: relative; padding-bottom: 52px; }
+  .tl-item:last-child{ padding-bottom: 0; }
+  .tl-num{
+    position: absolute;
+    left: -48px; top: 0;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--accent-teal);
+    color: var(--accent-teal);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tl-head{
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 8px 20px;
+    margin-bottom: 10px;
+  }
+  .tl-head h3{ font-size: 19px; }
+  .tl-date{ font-family: var(--font-mono); font-size: 12.5px; color: var(--text-faint); }
+  .tl-company{ font-family: var(--font-mono); font-size: 13px; color: var(--accent-amber); margin-bottom: 12px; }
+  .tl-item ul{ padding-left: 18px; color: var(--text-dim); font-size: 14.5px; display: grid; gap: 6px; }
+
+  /* ---------- CONTACTO ---------- */
+  .contact-section{ border-bottom: none; }
+  .contact-inner{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 64px;
+  }
+  .contact-inner h2{ margin-bottom: 20px; }
+  .contact-inner > div:first-child p{ font-size: 16px; max-width: 440px; }
+  .contact-email{
+    display: inline-flex;
+    margin-top: 28px;
+    font-family: var(--font-mono);
+    font-size: 20px;
+    color: var(--accent-teal);
+    border-bottom: 1px solid var(--accent-teal);
+    padding-bottom: 4px;
+  }
+  .contact-links{ display: grid; gap: 14px; align-content: start; }
+  .contact-links a{
+    font-family: var(--font-mono);
+    font-size: 14px;
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--text-dim);
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .contact-links a:hover{ border-color: var(--accent-teal); color: var(--text); }
+  @media (max-width: 780px){
+    .contact-inner{ grid-template-columns: 1fr; padding: 40px 28px; }
+  }
+
+  footer{
+    padding: 40px 0 60px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--text-faint);
+  }
+
+  @media (max-width: 720px){
+    section{ padding: 80px 0; }
+    .wrap{ padding: 0 22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="dot"></span>Lariza Sandoval</div>
+    <div class="navlinks">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#experiencia">Experiencia</a>
+    </div>
+    <a href="#contacto" class="nav-cta">Contactar</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="wrap">
+    <div class="hero-role">Ingenieria en sistemas · Ingeniera de Datos · Analista de Datos</div>
+    <h2>Extraer datos dispersos para tener <em>decisiones claras</em>.</h2>
+    <p class="hero-sub">Soy Lariza, Ingeniera en sistemas enfocada en la ingeniería y analisis de datos. Poseo una sólida base técnica en herramientas como Python, SQL, R, Power BI y muchas otras similares. Transformo datos complejos en soluciones estratégicas y visualizaciones de alto impacto. Me apasiona aplicar la ciencia y la informática para 
+optimizar procesos y facilitar la toma de decisiones basada en evidencia</p>
+    <div class="hero-actions">
+      <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+      <a href="#contacto" class="btn btn-ghost">Hablemos</a>
+    </div>
+    <!--
+    <div class="hero-stats">
+      <div><div class="stat-num">+X</div><div class="stat-label">Años de experiencia</div></div>
+      <div><div class="stat-num">+X</div><div class="stat-label">Pipelines en producción</div></div>
+      <div><div class="stat-num">+X</div><div class="stat-label">Dashboards entregados</div></div>
+      <div><div class="stat-num">X TB</div><div class="stat-label">Datos procesados</div></div>
+    </div>
+    -->
+  </div>
+</section>
+
+<section id="sobre-mi">
+  <div class="wrap">
+    <div class="eyebrow">Sobre mí</div>
+    <div class="about-grid">
+      <div class="avatar"><img src="profile_pic.jpg" class="profile-pic" alt="Lariza Sandoval"></div>
+      <div class="about-body">
+        <p>Soy ingeniera en sistemas con enfoque en <strong>ingeniería y análisis de datos e investigación</strong>. Me gusta el proceso de extraer datos de diferentes fuentes y contar la historia que ellos esconden.</p>
+        <p>He trabajado con equipos de producto y negocio para diseñar pipelines de datos, modelar información y construir dashboards que se usan para agilizar la toma de decisiones.</p>
+        <p>Fuera del trabajo, me gusta siempre aprender cosas nuevas, salir a correr y ver documentales.</p>
+        <div class="facts">
+          <div><span>Ubicación</span><span>Tegucigalpa, Honduras</span></div>
+          <div><span>Stack principal</span><span>Python · SQL · Power BI · Shiny for Python</span></div>
+          <div><span>Disponibilidad</span><span>Abierta a nuevos proyectos</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proyectos">
+  <div class="wrap">
+    <div class="eyebrow">Proyectos</div>
+    <h2>Trabajo reciente en datos, de extremo a extremo.</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-metric"></div>
+        <h3>Scientific Production in Honduras Data Pipeline</h3>
+        <p>Diseño e implementación de un pipeline batch que consolidaba datos de artículos cientificos, reduciendo errores manuales y tiempo de carga.</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">Kestra</span><span class="tag">Bigquery</span><span class="tag">dbt</span>
+          <span class="tag">Shiny for Python</span><span class="tag">Terraform</span>
+        </div>
+        <a href="https://github.com/larizasandoval/DEZoomCampProject" target="_blank" class="project-link">Ver detalle <span class="arrow">→</span></a>
+      </div>
+      
+      <div class="project-card">
+        <div class="project-metric">+10k horas de ahorro</div>
+        <h3>Mantenimiento y desarrollo de dashboards sector Bancario</h3>
+        <p>Diseñe e implementación dashboards para distintos tipos de usuarios en un Banco de renombre, con actualización automática.</p>
+        <div class="tag-row">
+          <span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">DAX</span><span class="tag">Python</span>
+        </div>
+        <a href="https://www.baccredomatic.com/" target="_blank" class="project-link">Ver detalle <span class="arrow">→</span></a>
+      </div>
+      <!--
+      <div class="project-card">
+        <div class="project-metric">98% precisión en clasificación</div>
+        <h3>Modelo de segmentación de clientes</h3>
+        <p>Análisis exploratorio y modelo de clustering para segmentar clientes según comportamiento de compra, usado para campañas de marketing.</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Pandas</span>
+        </div>
+        <a href="#" class="project-link">Ver detalle <span class="arrow">→</span></a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-metric">De 3 días a 20 min</div>
+        <h3>Automatización de reportes mensuales</h3>
+        <p>Script que reemplazó un proceso manual de armado de reportes, integrando extracción, limpieza y generación automática de documentos.</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">GCP</span><span class="tag">BigQuery</span>
+        </div>
+        <a href="#" class="project-link">Ver detalle <span class="arrow">→</span></a>
+        -->
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="habilidades">
+  <div class="wrap">
+    <div class="eyebrow">Habilidades</div>
+    <h2>Herramientas que uso para mover y entender datos.</h2>
+    <div class="skills-groups">
+      <div class="skill-group">
+        <h3>Lenguajes</h3>
+        <div class="skill-tags">
+          <span>Python</span><span>SQL</span><span>R</span><span>DAX</span><span>JavaScript</span>
+          <span>C++</span><span>Matlab</span><span>Shell</span><span>Julia</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Datos & orquestación</h3>
+        <div class="skill-tags">
+          <span>Airflow</span><span>dbt</span><span>Spark</span><span>Kestra</span><span>dbt</span><span>Docker</span><span>Git</span><span>Terraform</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Cloud</h3>
+        <div class="skill-tags">
+          <span>AWS</span><span>GCP</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Bases de datos & visualización</h3>
+        <div class="skill-tags">
+          <span>PostgreSQL</span><span>BigQuery</span><span>Shiny for Python</span><span>Power BI</span><span>Python</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia">
+  <div class="wrap">
+    <div class="eyebrow">Experiencia</div>
+    <h2>Trayectoria académica y profesional.</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-num">00</div>
+        <div class="tl-head">
+          <h3>Msc. Research and Innovation in Computer based Science and Engineering</h3>
+          <span class="tl-date">2025 — 2027</span>
+        </div>
+        <div class="tl-company">Universidad Autónoma de Barcelona</div>
+        <ul>
+          <li>Estudiando el Máster Universitario en Research and Innovation in Computer based Science and Engineering</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-num">01</div>
+        <div class="tl-head">
+          <h3>Ingeniera en visualización de Datos Junior</h3>
+          <span class="tl-date">2022 — 2025</span>
+        </div>
+        <div class="tl-company">BAC Honduras</div>
+        <ul>
+        
+          <li>Lideré y desarrollé proyectos de datos integrales  para generar información estratégica para el negocio.</li>
+          <li>Creé pipelines ETL automatizados para la extracción y carga de datos sin interrupciones en múltiples sistemas.</li>
+          <li>Diseñé paneles de control ejecutivos y operativos en Power BI, impulsando la toma de decisiones basada en datos.</li>
+          <li>Automatizé flujos de trabajo manuales utilizando, aumentando significativamente la eficiencia operativa.</li>
+          <li>Colaboré mensualmente con líderes empresariales y operativos para asegurar la adopción de herramientas y su alineación con los objetivos corporativos.</li>
+          <li>Identifiqué e implementé oportunidades de automatización, conectando las brechas técnicas con las necesidades del negocio.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-num">02</div>
+        <div class="tl-head">
+          <h3>Asistente de investigación | Analista de Datos</h3>
+          <span class="tl-date">Ago 2021 — Dic 2021</span>
+        </div>
+        <div class="tl-company">Ninehub Costa Rica</div>
+        <ul>
+          <li>Procesé y analicé datos de alta dimensión provenientes de sondas espaciales para identificar características de estrellas evolucionadas.</li>
+          <li>Desarrollé visualizaciones de datos utilizando Python y R para modelar poblaciones estelares y patrones evolutivos.</li>
+          <li>Colaboré con investigadores principales para transformar datos de telemetría astronómica en bruto en información científica relevante.</li>
+          <li>Gestioné y consulté conjuntos de datos complejos mediante SQL para garantizar la integridad de los datos enel modelado astrofísico.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-num">03</div>
+        <div class="tl-head">
+          <h3>Ingeniería en Sistemas</h3>
+          <span class="tl-date">2017 — 2023</span>
+        </div>
+        <div class="tl-company">Universidad Nacional Autónoma de Honduras</div>
+        <ul>
+          <li>Formación en la carrera de Ingenieria en Sistemas computacionales</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="contact-section">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div>
+        <div class="eyebrow">Contacto</div>
+        <h2>¡Conectemos!</h2>
+        <p>Escríbeme directo o encuéntrame en cualquiera de estas plataformas. Respondo en 1-2 días hábiles.</p>
+        <a href="mailto:maholy.sandoval@gmail.com" class="contact-email">maholy.sandoval@gmail.com</a>
+      </div>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/larizasandoval/" target="_blank" rel="noopener">LinkedIn <span>→</span></a>
+        <a href="https://github.com/larizasandoval" target="_blank" rel="noopener">GitHub <span>→</span></a>
+        <a href="mailto:maholy.sandoval@gmail.com">Email <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Lariza Sandoval — hecho con HTML, CSS y JS.</div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Fondo del hero: red de puntos estilo "scatter plot" que se conectan,
+  // como metáfora de encontrar relaciones en los datos.
+  (function(){
+    var canvas = document.getElementById('hero-canvas');
+    var ctx = canvas.getContext('2d');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hero = document.querySelector('.hero');
+    var w, h, points = [];
+    var mouse = { x: null, y: null };
+
+    function resize(){
+      w = canvas.width = hero.offsetWidth;
+      h = canvas.height = hero.offsetHeight;
+      var count = Math.floor((w * h) / 26000);
+      points = [];
+      for(var i=0; i<count; i++){
+        points.push({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          vx: (Math.random()-0.5) * 0.15,
+          vy: (Math.random()-0.5) * 0.15,
+          r: Math.random() * 1.6 + 1
+        });
+      }
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,w,h);
+      for(var i=0;i<points.length;i++){
+        var p = points[i];
+        if(!reduceMotion){
+          p.x += p.vx; p.y += p.vy;
+          if(p.x < 0 || p.x > w) p.vx *= -1;
+          if(p.y < 0 || p.y > h) p.vy *= -1;
+        }
+        for(var j=i+1;j<points.length;j++){
+          var q = points[j];
+          var dx = p.x-q.x, dy = p.y-q.y;
+          var dist = Math.sqrt(dx*dx+dy*dy);
+          if(dist < 130){
+            ctx.strokeStyle = 'rgba(12,143,130,' + (0.20 * (1 - dist/130)) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(p.x,p.y);
+            ctx.lineTo(q.x,q.y);
+            ctx.stroke();
+          }
+        }
+      }
+      for(var k=0;k<points.length;k++){
+        var pt = points[k];
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI*2);
+        ctx.fillStyle = k % 5 === 0 ? 'rgba(201,127,3,0.85)' : 'rgba(16,24,38,0.30)';
+        ctx.fill();
+      }
+      if(!reduceMotion) requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    draw();
+    if(reduceMotion) draw(); // dibuja un solo frame estático
+  })();
+</script>
+
+</body>
+</html>
