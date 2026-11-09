@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="html-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="logo_ls.ico">
 <title>Lariza Sandoval</title>
-<meta name="description" content="Portafolio de Nombre Apellido, Ingeniera de Datos y Analista de Datos.">
+<meta name="description" content="Portafolio de Lariza Sandoval, Ingeniera en sistemas, de Datos y Analista de Datos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -107,6 +107,26 @@
   .navlinks{ display: flex; gap: 36px; font-size: 14px; color: var(--text-dim); }
   .navlinks a{ transition: color .2s ease; position: relative; }
   .navlinks a:hover{ color: var(--text); }
+  
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .lang-btn{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 8px 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .lang-btn:hover{ border-color: var(--accent-teal); color: var(--accent-teal); }
+
   .nav-cta{
     font-family: var(--font-mono);
     font-size: 13px;
@@ -117,7 +137,7 @@
   }
   .nav-cta:hover{ border-color: var(--accent-teal); color: var(--accent-teal); }
   .navlinks, .nav-cta{ display: flex; }
-  @media (max-width: 720px){
+  @media (max-width: 768px){
     .navlinks{ display: none; }
   }
 
@@ -182,36 +202,6 @@
     color: var(--text);
   }
   .btn-ghost:hover{ border-color: var(--accent-teal); color: var(--accent-teal); transform: translateY(-2px); }
-
-  .hero-stats{
-    margin-top: 90px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  .hero-stats div{
-    background: var(--bg-elevated);
-    padding: 22px 24px;
-  }
-  .stat-num{
-    font-family: var(--font-mono);
-    font-size: 26px;
-    color: var(--accent-teal);
-  }
-  .stat-label{
-    font-size: 12px;
-    color: var(--text-faint);
-    margin-top: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  @media (max-width: 720px){
-    .hero-stats{ grid-template-columns: repeat(2, 1fr); }
-  }
 
   /* ---------- SOBRE MI ---------- */
   .about-grid{
@@ -419,50 +409,44 @@
   <nav class="wrap">
     <div class="logo"><span class="dot"></span>Lariza Sandoval</div>
     <div class="navlinks">
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#habilidades">Habilidades</a>
-      <a href="#experiencia">Experiencia</a>
+      <a href="#sobre-mi" data-i18n="nav-about">Sobre mí</a>
+      <a href="#proyectos" data-i18n="nav-projects">Proyectos</a>
+      <a href="#habilidades" data-i18n="nav-skills">Habilidades</a>
+      <a href="#experiencia" data-i18n="nav-experience">Experiencia</a>
     </div>
-    <a href="#contacto" class="nav-cta">Contactar</a>
+    <div class="nav-right">
+      <button class="lang-btn" id="lang-toggle" onclick="toggleLanguage()">EN</button>
+      <a href="#contacto" class="nav-cta" data-i18n="nav-contact">Contactar</a>
+    </div>
   </nav>
 </header>
 
 <section class="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="wrap">
-    <div class="hero-role">Ingenieria en sistemas · Ingeniera de Datos · Analista de Datos</div>
-    <h2>Extraer datos dispersos para tener <em>decisiones claras</em>.</h2>
-    <p class="hero-sub">Soy Lariza, Ingeniera en sistemas enfocada en la ingeniería y analisis de datos. Poseo una sólida base técnica en herramientas como Python, SQL, R, Power BI y muchas otras similares. Transformo datos complejos en soluciones estratégicas y visualizaciones de alto impacto. Me apasiona aplicar la ciencia y la informática para 
-optimizar procesos y facilitar la toma de decisiones basada en evidencia</p>
+    <div class="hero-role" data-i18n="hero-role">Ingeniería en sistemas · Ingeniera de Datos · Analista de Datos</div>
+    <h2 data-i18n-html="hero-title">Extraer datos dispersos para tener <em>decisiones claras</em>.</h2>
+    <p class="hero-sub" data-i18n="hero-sub">Soy Lariza, Ingeniera en sistemas enfocada en la ingeniería y análisis de datos. Poseo una sólida base técnica en herramientas como Python, SQL, R, Power BI y muchas otras similares. Transformo datos complejos en soluciones estratégicas y visualizaciones de alto impacto. Me apasiona aplicar la ciencia y la informática para optimizar procesos y facilitar la toma de decisiones basada en evidencia.</p>
     <div class="hero-actions">
-      <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
-      <a href="#contacto" class="btn btn-ghost">Hablemos</a>
+      <a href="#proyectos" class="btn btn-primary" data-i18n="btn-projects">Ver proyectos</a>
+      <a href="#contacto" class="btn btn-ghost" data-i18n="btn-contact">Hablemos</a>
     </div>
-    <!--
-    <div class="hero-stats">
-      <div><div class="stat-num">+X</div><div class="stat-label">Años de experiencia</div></div>
-      <div><div class="stat-num">+X</div><div class="stat-label">Pipelines en producción</div></div>
-      <div><div class="stat-num">+X</div><div class="stat-label">Dashboards entregados</div></div>
-      <div><div class="stat-num">X TB</div><div class="stat-label">Datos procesados</div></div>
-    </div>
-    -->
   </div>
 </section>
 
 <section id="sobre-mi">
   <div class="wrap">
-    <div class="eyebrow">Sobre mí</div>
+    <div class="eyebrow" data-i18n="about-eyebrow">Sobre mí</div>
     <div class="about-grid">
       <div class="avatar"><img src="profile_pic.jpg" class="profile-pic" alt="Lariza Sandoval"></div>
       <div class="about-body">
-        <p>Soy ingeniera en sistemas con enfoque en <strong>ingeniería y análisis de datos e investigación</strong>. Me gusta el proceso de extraer datos de diferentes fuentes y contar la historia que ellos esconden.</p>
-        <p>He trabajado con equipos de producto y negocio para diseñar pipelines de datos, modelar información y construir dashboards que se usan para agilizar la toma de decisiones.</p>
-        <p>Fuera del trabajo, me gusta siempre aprender cosas nuevas, salir a correr y ver documentales.</p>
+        <p data-i18n-html="about-p1">Soy ingeniera en sistemas con enfoque en <strong>ingeniería y análisis de datos e investigación</strong>. Me gusta el proceso de extraer datos de diferentes fuentes y contar la historia que ellos esconden.</p>
+        <p data-i18n="about-p2">He trabajado con equipos de producto y negocio para diseñar pipelines de datos, modelar información y construir dashboards que se usan para agilizar la toma de decisiones.</p>
+        <p data-i18n="about-p3">Fuera del trabajo, me gusta siempre aprender cosas nuevas, salir a correr y ver documentales.</p>
         <div class="facts">
-          <div><span>Ubicación</span><span>Tegucigalpa, Honduras</span></div>
-          <div><span>Stack principal</span><span>Python · SQL · Power BI · Shiny for Python</span></div>
-          <div><span>Disponibilidad</span><span>Abierta a nuevos proyectos</span></div>
+          <div><span data-i18n="fact-location-label">Ubicación</span><span data-i18n="fact-location-val">Tegucigalpa, Honduras</span></div>
+          <div><span data-i18n="fact-stack-label">Stack principal</span><span>Python · SQL · Power BI · Shiny for Python</span></div>
+          <div><span data-i18n="fact-status-label">Disponibilidad</span><span data-i18n="fact-status-val">Abierta a nuevos proyectos</span></div>
         </div>
       </div>
     </div>
@@ -471,50 +455,29 @@ optimizar procesos y facilitar la toma de decisiones basada en evidencia</p>
 
 <section id="proyectos">
   <div class="wrap">
-    <div class="eyebrow">Proyectos</div>
-    <h2>Trabajo reciente en datos, de extremo a extremo.</h2>
+    <div class="eyebrow" data-i18n="projects-eyebrow">Proyectos</div>
+    <h2 data-i18n="projects-title">Trabajo reciente en datos, de extremo a extremo.</h2>
     <div class="projects-grid">
 
       <div class="project-card">
         <div class="project-metric"></div>
         <h3>Scientific Production in Honduras Data Pipeline</h3>
-        <p>Diseño e implementación de un pipeline batch que consolidaba datos de artículos cientificos, reduciendo errores manuales y tiempo de carga.</p>
+        <p data-i18n="proj-1-desc">Diseño e implementación de un pipeline batch que consolidaba datos de artículos científicos, reduciendo errores manuales y tiempo de carga.</p>
         <div class="tag-row">
           <span class="tag">Python</span><span class="tag">Kestra</span><span class="tag">Bigquery</span><span class="tag">dbt</span>
           <span class="tag">Shiny for Python</span><span class="tag">Terraform</span>
         </div>
-        <a href="https://github.com/larizasandoval/DEZoomCampProject" target="_blank" class="project-link">Ver detalle <span class="arrow">→</span></a>
+        <a href="https://github.com/larizasandoval/DEZoomCampProject" target="_blank" class="project-link"><span data-i18n="proj-link">Ver detalle</span> <span class="arrow">→</span></a>
       </div>
       
       <div class="project-card">
-        <div class="project-metric">+10k horas de ahorro</div>
-        <h3>Mantenimiento y desarrollo de dashboards sector Bancario</h3>
-        <p>Diseñe e implementación dashboards para distintos tipos de usuarios en un Banco de renombre, con actualización automática.</p>
+        <div class="project-metric" data-i18n="proj-2-metric">+10k horas de ahorro</div>
+        <h3 data-i18n="proj-2-title">Mantenimiento y desarrollo de dashboards sector Bancario</h3>
+        <p data-i18n="proj-2-desc">Diseñé e implementé dashboards para distintos tipos de usuarios en un Banco de renombre, con actualización automática.</p>
         <div class="tag-row">
           <span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">DAX</span><span class="tag">Python</span>
         </div>
-        <a href="https://www.baccredomatic.com/" target="_blank" class="project-link">Ver detalle <span class="arrow">→</span></a>
-      </div>
-      <!--
-      <div class="project-card">
-        <div class="project-metric">98% precisión en clasificación</div>
-        <h3>Modelo de segmentación de clientes</h3>
-        <p>Análisis exploratorio y modelo de clustering para segmentar clientes según comportamiento de compra, usado para campañas de marketing.</p>
-        <div class="tag-row">
-          <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Pandas</span>
-        </div>
-        <a href="#" class="project-link">Ver detalle <span class="arrow">→</span></a>
-      </div>
-
-      <div class="project-card">
-        <div class="project-metric">De 3 días a 20 min</div>
-        <h3>Automatización de reportes mensuales</h3>
-        <p>Script que reemplazó un proceso manual de armado de reportes, integrando extracción, limpieza y generación automática de documentos.</p>
-        <div class="tag-row">
-          <span class="tag">Python</span><span class="tag">GCP</span><span class="tag">BigQuery</span>
-        </div>
-        <a href="#" class="project-link">Ver detalle <span class="arrow">→</span></a>
-        -->
+        <a href="https://www.baccredomatic.com/" target="_blank" class="project-link"><span data-i18n="proj-link">Ver detalle</span> <span class="arrow">→</span></a>
       </div>
 
     </div>
@@ -523,32 +486,32 @@ optimizar procesos y facilitar la toma de decisiones basada en evidencia</p>
 
 <section id="habilidades">
   <div class="wrap">
-    <div class="eyebrow">Habilidades</div>
-    <h2>Herramientas que uso para mover y entender datos.</h2>
+    <div class="eyebrow" data-i18n="skills-eyebrow">Habilidades</div>
+    <h2 data-i18n="skills-title">Herramientas que uso para mover y entender datos.</h2>
     <div class="skills-groups">
       <div class="skill-group">
-        <h3>Lenguajes</h3>
+        <h3 data-i18n="skills-lang">Lenguajes</h3>
         <div class="skill-tags">
           <span>Python</span><span>SQL</span><span>R</span><span>DAX</span><span>JavaScript</span>
           <span>C++</span><span>Matlab</span><span>Shell</span><span>Julia</span>
         </div>
       </div>
       <div class="skill-group">
-        <h3>Datos & orquestación</h3>
+        <h3 data-i18n="skills-data">Datos & orquestación</h3>
         <div class="skill-tags">
-          <span>Airflow</span><span>dbt</span><span>Spark</span><span>Kestra</span><span>dbt</span><span>Docker</span><span>Git</span><span>Terraform</span>
+          <span>Airflow</span><span>dbt</span><span>Spark</span><span>Kestra</span><span>Docker</span><span>Git</span><span>Terraform</span>
         </div>
       </div>
       <div class="skill-group">
-        <h3>Cloud</h3>
+        <h3 data-i18n="skills-cloud">Cloud</h3>
         <div class="skill-tags">
           <span>AWS</span><span>GCP</span>
         </div>
       </div>
       <div class="skill-group">
-        <h3>Bases de datos & visualización</h3>
+        <h3 data-i18n="skills-db">Bases de datos & visualización</h3>
         <div class="skill-tags">
-          <span>PostgreSQL</span><span>BigQuery</span><span>Shiny for Python</span><span>Power BI</span><span>Python</span>
+          <span>PostgreSQL</span><span>BigQuery</span><span>Shiny for Python</span><span>Power BI</span>
         </div>
       </div>
     </div>
@@ -557,8 +520,8 @@ optimizar procesos y facilitar la toma de decisiones basada en evidencia</p>
 
 <section id="experiencia">
   <div class="wrap">
-    <div class="eyebrow">Experiencia</div>
-    <h2>Trayectoria académica y profesional.</h2>
+    <div class="eyebrow" data-i18n="exp-eyebrow">Experiencia</div>
+    <h2 data-i18n="exp-title">Trayectoria académica y profesional.</h2>
     <div class="timeline">
 
       <div class="tl-item">
@@ -569,52 +532,51 @@ optimizar procesos y facilitar la toma de decisiones basada en evidencia</p>
         </div>
         <div class="tl-company">Universidad Autónoma de Barcelona</div>
         <ul>
-          <li>Estudiando el Máster Universitario en Research and Innovation in Computer based Science and Engineering</li>
+          <li data-i18n="exp-0-li">Estudiando el Máster Universitario en Research and Innovation in Computer based Science and Engineering</li>
         </ul>
       </div>
 
       <div class="tl-item">
         <div class="tl-num">01</div>
         <div class="tl-head">
-          <h3>Ingeniera en visualización de Datos Junior</h3>
+          <h3 data-i18n="exp-1-role">Ingeniera en visualización de Datos Junior</h3>
           <span class="tl-date">2022 — 2025</span>
         </div>
         <div class="tl-company">BAC Honduras</div>
         <ul>
-        
-          <li>Lideré y desarrollé proyectos de datos integrales  para generar información estratégica para el negocio.</li>
-          <li>Creé pipelines ETL automatizados para la extracción y carga de datos sin interrupciones en múltiples sistemas.</li>
-          <li>Diseñé paneles de control ejecutivos y operativos en Power BI, impulsando la toma de decisiones basada en datos.</li>
-          <li>Automatizé flujos de trabajo manuales utilizando, aumentando significativamente la eficiencia operativa.</li>
-          <li>Colaboré mensualmente con líderes empresariales y operativos para asegurar la adopción de herramientas y su alineación con los objetivos corporativos.</li>
-          <li>Identifiqué e implementé oportunidades de automatización, conectando las brechas técnicas con las necesidades del negocio.</li>
+          <li data-i18n="exp-1-li1">Lideré y desarrollé proyectos de datos integrales para generar información estratégica para el negocio.</li>
+          <li data-i18n="exp-1-li2">Creé pipelines ETL automatizados para la extracción y carga de datos sin interrupciones en múltiples sistemas.</li>
+          <li data-i18n="exp-1-li3">Diseñé paneles de control ejecutivos y operativos en Power BI, impulsando la toma de decisiones basada en datos.</li>
+          <li data-i18n="exp-1-li4">Automaticé flujos de trabajo manuales, aumentando significativamente la eficiencia operativa.</li>
+          <li data-i18n="exp-1-li5">Colaboré mensualmente con líderes empresariales y operativos para asegurar la adopción de herramientas y su alineación con los objetivos corporativos.</li>
+          <li data-i18n="exp-1-li6">Identifiqué e implementé oportunidades de automatización, conectando las brechas técnicas con las necesidades del negocio.</li>
         </ul>
       </div>
 
       <div class="tl-item">
         <div class="tl-num">02</div>
         <div class="tl-head">
-          <h3>Asistente de investigación | Analista de Datos</h3>
+          <h3 data-i18n="exp-2-role">Asistente de investigación | Analista de Datos</h3>
           <span class="tl-date">Ago 2021 — Dic 2021</span>
         </div>
         <div class="tl-company">Ninehub Costa Rica</div>
         <ul>
-          <li>Procesé y analicé datos de alta dimensión provenientes de sondas espaciales para identificar características de estrellas evolucionadas.</li>
-          <li>Desarrollé visualizaciones de datos utilizando Python y R para modelar poblaciones estelares y patrones evolutivos.</li>
-          <li>Colaboré con investigadores principales para transformar datos de telemetría astronómica en bruto en información científica relevante.</li>
-          <li>Gestioné y consulté conjuntos de datos complejos mediante SQL para garantizar la integridad de los datos enel modelado astrofísico.</li>
+          <li data-i18n="exp-2-li1">Procesé y analicé datos de alta dimensión provenientes de sondas espaciales para identificar características de estrellas evolucionadas.</li>
+          <li data-i18n="exp-2-li2">Desarrollé visualizaciones de datos utilizando Python y R para modelar poblaciones estelares y patrones evolutivos.</li>
+          <li data-i18n="exp-2-li3">Colaboré con investigadores principales para transformar datos de telemetría astronómica en bruto en información científica relevante.</li>
+          <li data-i18n="exp-2-li4">Gestioné y consulté conjuntos de datos complejos mediante SQL para garantizar la integridad de los datos en el modelado astrofísico.</li>
         </ul>
       </div>
 
       <div class="tl-item">
         <div class="tl-num">03</div>
         <div class="tl-head">
-          <h3>Ingeniería en Sistemas</h3>
+          <h3 data-i18n="exp-3-role">Ingeniería en Sistemas</h3>
           <span class="tl-date">2017 — 2023</span>
         </div>
         <div class="tl-company">Universidad Nacional Autónoma de Honduras</div>
         <ul>
-          <li>Formación en la carrera de Ingenieria en Sistemas computacionales</li>
+          <li data-i18n="exp-3-li">Formación en la carrera de Ingeniería en Sistemas Computacionales</li>
         </ul>
       </div>
 
@@ -626,9 +588,9 @@ optimizar procesos y facilitar la toma de decisiones basada en evidencia</p>
   <div class="wrap">
     <div class="contact-inner">
       <div>
-        <div class="eyebrow">Contacto</div>
-        <h2>¡Conectemos!</h2>
-        <p>Escríbeme directo o encuéntrame en cualquiera de estas plataformas. Respondo en 1-2 días hábiles.</p>
+        <div class="eyebrow" data-i18n="contact-eyebrow">Contacto</div>
+        <h2 data-i18n="contact-title">¡Conectemos!</h2>
+        <p data-i18n="contact-sub">Escríbeme directo o encuéntrame en cualquiera de estas plataformas. Respondo en 1-2 días hábiles.</p>
         <a href="mailto:maholy.sandoval@gmail.com" class="contact-email">maholy.sandoval@gmail.com</a>
       </div>
       <div class="contact-links">
@@ -641,11 +603,153 @@ optimizar procesos y facilitar la toma de decisiones basada en evidencia</p>
 </section>
 
 <footer>
-  <div class="wrap">© <span id="year"></span> Lariza Sandoval — hecho con HTML, CSS y JS.</div>
+  <div class="wrap">© <span id="year"></span> Lariza Sandoval — <span data-i18n="footer-text">hecho con HTML, CSS y JS.</span></div>
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Diccionario de Traducciones (ES / EN)
+  const translations = {
+    es: {
+      "nav-about": "Sobre mí",
+      "nav-projects": "Proyectos",
+      "nav-skills": "Habilidades",
+      "nav-experience": "Experiencia",
+      "nav-contact": "Contactar",
+      "hero-role": "Ingeniería en sistemas · Ingeniera de Datos · Analista de Datos",
+      "hero-title": "Extraer datos dispersos para tener <em>decisiones claras</em>.",
+      "hero-sub": "Soy Lariza, Ingeniera en sistemas enfocada en la ingeniería y análisis de datos. Poseo una sólida base técnica en herramientas como Python, SQL, R, Power BI y muchas otras similares. Transformo datos complejos en soluciones estratégicas y visualizaciones de alto impacto. Me apasiona aplicar la ciencia y la informática para optimizar procesos y facilitar la toma de decisiones basada en evidencia.",
+      "btn-projects": "Ver proyectos",
+      "btn-contact": "Hablemos",
+      "about-eyebrow": "Sobre mí",
+      "about-p1": "Soy ingeniera en sistemas con enfoque en <strong>ingeniería y análisis de datos e investigación</strong>. Me gusta el proceso de extraer datos de diferentes fuentes y contar la historia que ellos esconden.",
+      "about-p2": "He trabajado con equipos de producto y negocio para diseñar pipelines de datos, modelar información y construir dashboards que se usan para agilizar la toma de decisiones.",
+      "about-p3": "Fuera del trabajo, me gusta siempre aprender cosas nuevas, salir a correr y ver documentales.",
+      "fact-location-label": "Ubicación",
+      "fact-location-val": "Tegucigalpa, Honduras",
+      "fact-stack-label": "Stack principal",
+      "fact-status-label": "Disponibilidad",
+      "fact-status-val": "Abierta a nuevos proyectos",
+      "projects-eyebrow": "Proyectos",
+      "projects-title": "Trabajo reciente en datos, de extremo a extremo.",
+      "proj-1-desc": "Diseño e implementación de un pipeline batch que consolidaba datos de artículos científicos, reduciendo errores manuales y tiempo de carga.",
+      "proj-link": "Ver detalle",
+      "proj-2-metric": "+10k horas de ahorro",
+      "proj-2-title": "Mantenimiento y desarrollo de dashboards sector Bancario",
+      "proj-2-desc": "Diseñé e implementé dashboards para distintos tipos de usuarios en un Banco de renombre, con actualización automática.",
+      "skills-eyebrow": "Habilidades",
+      "skills-title": "Herramientas que uso para mover y entender datos.",
+      "skills-lang": "Lenguajes",
+      "skills-data": "Datos & orquestación",
+      "skills-cloud": "Cloud",
+      "skills-db": "Bases de datos & visualización",
+      "exp-eyebrow": "Experiencia",
+      "exp-title": "Trayectoria académica y profesional.",
+      "exp-0-li": "Estudiando el Máster Universitario en Research and Innovation in Computer based Science and Engineering",
+      "exp-1-role": "Ingeniera en visualización de Datos Junior",
+      "exp-1-li1": "Lideré y desarrollé proyectos de datos integrales para generar información estratégica para el negocio.",
+      "exp-1-li2": "Creé pipelines ETL automatizados para la extracción y carga de datos sin interrupciones en múltiples sistemas.",
+      "exp-1-li3": "Diseñé paneles de control ejecutivos y operativos en Power BI, impulsando la toma de decisiones basada en datos.",
+      "exp-1-li4": "Automaticé flujos de trabajo manuales, aumentando significativamente la eficiencia operativa.",
+      "exp-1-li5": "Colaboré mensualmente con líderes empresariales y operativos para asegurar la adopción de herramientas y su alineación con los objetivos corporativos.",
+      "exp-1-li6": "Identifiqué e implementé oportunidades de automatización, conectando las brechas técnicas con las necesidades del negocio.",
+      "exp-2-role": "Asistente de investigación | Analista de Datos",
+      "exp-2-li1": "Procesé y analicé datos de alta dimensión provenientes de sondas espaciales para identificar características de estrellas evolucionadas.",
+      "exp-2-li2": "Desarrollé visualizaciones de datos utilizando Python y R para modelar poblaciones estelares y patrones evolutivos.",
+      "exp-2-li3": "Colaboré con investigadores principales para transformar datos de telemetría astronómica en bruto en información científica relevante.",
+      "exp-2-li4": "Gestioné y consulté conjuntos de datos complejos mediante SQL para garantizar la integridad de los datos en el modelado astrofísico.",
+      "exp-3-role": "Ingeniería en Sistemas",
+      "exp-3-li": "Formación en la carrera de Ingeniería en Sistemas Computacionales",
+      "contact-eyebrow": "Contacto",
+      "contact-title": "¡Conectemos!",
+      "contact-sub": "Escríbeme directo o encuéntrame en cualquiera de estas plataformas. Respondo en 1-2 días hábiles.",
+      "footer-text": "hecho con HTML, CSS y JS."
+    },
+    en: {
+      "nav-about": "About me",
+      "nav-projects": "Projects",
+      "nav-skills": "Skills",
+      "nav-experience": "Experience",
+      "nav-contact": "Contact",
+      "hero-role": "Systems Engineer · Data Engineer · Data Analyst",
+      "hero-title": "Extracting scattered data for <em>clear decisions</em>.",
+      "hero-sub": "I'm Lariza, a Systems Engineer focused on data engineering and analysis. I have a solid technical foundation in tools like Python, SQL, R, Power BI, and similar technologies. I transform complex data into strategic solutions and high-impact visualizations. I am passionate about applying science and computing to optimize processes and facilitate evidence-based decision-making.",
+      "btn-projects": "View projects",
+      "btn-contact": "Let's talk",
+      "about-eyebrow": "About me",
+      "about-p1": "I am a systems engineer focusing on <strong>data engineering, analysis, and research</strong>. I enjoy the process of extracting data from different sources and telling the story hidden within them.",
+      "about-p2": "I have worked with product and business teams to design data pipelines, model information, and build dashboards used to streamline decision-making.",
+      "about-p3": "Outside of work, I always love learning new things, going for runs, and watching documentaries.",
+      "fact-location-label": "Location",
+      "fact-location-val": "Tegucigalpa, Honduras",
+      "fact-stack-label": "Main Stack",
+      "fact-status-label": "Availability",
+      "fact-status-val": "Open to new projects",
+      "projects-eyebrow": "Projects",
+      "projects-title": "Recent end-to-end data work.",
+      "proj-1-desc": "Design and implementation of a batch pipeline consolidating scientific article data, reducing manual errors and load time.",
+      "proj-link": "View details",
+      "proj-2-metric": "+10k hours saved",
+      "proj-2-title": "Banking Sector Dashboard Maintenance & Development",
+      "proj-2-desc": "Designed and implemented dashboards for various types of users at a renowned bank, featuring automatic updates.",
+      "skills-eyebrow": "Skills",
+      "skills-title": "Tools I use to move and understand data.",
+      "skills-lang": "Languages",
+      "skills-data": "Data & Orchestration",
+      "skills-cloud": "Cloud",
+      "skills-db": "Databases & Visualization",
+      "exp-eyebrow": "Experience",
+      "exp-title": "Academic and Professional Career.",
+      "exp-0-li": "Studying the Master's Degree in Research and Innovation in Computer based Science and Engineering",
+      "exp-1-role": "Junior Data Visualization Engineer",
+      "exp-1-li1": "Led and developed comprehensive data projects to generate strategic business insights.",
+      "exp-1-li2": "Created automated ETL pipelines for seamless data extraction and loading across multiple systems.",
+      "exp-1-li3": "Designed executive and operational dashboards in Power BI, driving data-driven decision making.",
+      "exp-1-li4": "Automated manual workflows, significantly increasing operational efficiency.",
+      "exp-1-li5": "Collaborated monthly with business and operational leaders to ensure tool adoption and alignment with corporate goals.",
+      "exp-1-li6": "Identified and implemented automation opportunities, bridging technical gaps with business needs.",
+      "exp-2-role": "Research Assistant | Data Analyst",
+      "exp-2-li1": "Processed and analyzed high-dimensional data from space probes to identify characteristics of evolved stars.",
+      "exp-2-li2": "Developed data visualizations using Python and R to model stellar populations and evolutionary patterns.",
+      "exp-2-li3": "Collaborated with principal investigators to transform raw astronomical telemetry data into relevant scientific insights.",
+      "exp-2-li4": "Managed and queried complex datasets using SQL to ensure data integrity in astrophysical modeling.",
+      "exp-3-role": "Systems Engineering",
+      "exp-3-li": "Bachelor's degree in Computer Systems Engineering",
+      "contact-eyebrow": "Contact",
+      "contact-title": "Let's connect!",
+      "contact-sub": "Message me directly or find me on any of these platforms. I respond within 1-2 business days.",
+      "footer-text": "made with HTML, CSS and JS."
+    }
+  };
+
+  let currentLang = 'es';
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    document.getElementById('html-root').setAttribute('lang', lang);
+    document.getElementById('lang-toggle').textContent = lang === 'es' ? 'EN' : 'ES';
+
+    // Traducir elementos estándar con data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key]) {
+        el.textContent = translations[lang][key];
+      }
+    });
+
+    // Traducir elementos con HTML (como etiquetas <em> o <strong>)
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+  }
+
+  function toggleLanguage() {
+    setLanguage(currentLang === 'es' ? 'en' : 'es');
+  }
 
   // Fondo del hero: red de puntos estilo "scatter plot" que se conectan,
   // como metáfora de encontrar relaciones en los datos.
@@ -655,7 +759,6 @@ optimizar procesos y facilitar la toma de decisiones basada en evidencia</p>
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var hero = document.querySelector('.hero');
     var w, h, points = [];
-    var mouse = { x: null, y: null };
 
     function resize(){
       w = canvas.width = hero.offsetWidth;
@@ -709,7 +812,7 @@ optimizar procesos y facilitar la toma de decisiones basada en evidencia</p>
     window.addEventListener('resize', resize);
     resize();
     draw();
-    if(reduceMotion) draw(); // dibuja un solo frame estático
+    if(reduceMotion) draw();
   })();
 </script>
 
